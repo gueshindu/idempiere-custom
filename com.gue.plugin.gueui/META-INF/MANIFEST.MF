@@ -1,0 +1,13 @@
+Jetty-WarFragmentFolderPath: /
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gue!UI
+Bundle-SymbolicName: com.gue.plugin.gueui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: org.adempiere.ui.zk;bundle-version="5.1"
+Automatic-Module-Name: org.gue.guetheme
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: theme/,
+ .,
+ src/
+Bundle-Vendor: Gue!Shindu
