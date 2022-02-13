@@ -391,7 +391,16 @@ public class MMovementConfirm extends X_M_MovementConfirm implements DocAction
 				m_processMsg = "ShipLine not saved - " + confirm;
 				return DocAction.STATUS_Invalid;
 			}
-			if (confirm.isFullyConfirmed() && confirm.getScrappedQty().signum() == 0)
+			
+			//Add by Shindu 13 Feb 2022. Disable create diff Doc
+			boolean SBRNoDiffDoc = MSysConfig.getBooleanValue("SBR_NODIFF_DOC",false, move.getAD_Client_ID(), move.getAD_Org_ID());
+			
+			log.log(Level.INFO, "SBRNoDiffDoc: " + SBRNoDiffDoc);
+			
+			//Orig: if (confirm.isFullyConfirmed() && confirm.getScrappedQty().signum() == 0)
+			//Modified: 
+			if ((confirm.isFullyConfirmed() && confirm.getScrappedQty().signum() == 0 ) || SBRNoDiffDoc )
+			//End by shindu
 			{
 				confirm.setProcessed(true);
 				confirm.saveEx(get_TrxName());
@@ -426,10 +435,7 @@ public class MMovementConfirm extends X_M_MovementConfirm implements DocAction
 			return DocAction.STATUS_Invalid;
 		}
 	
-		boolean sbrCompleteDiff = false;
-		
-		log.log(Level.SEVERE, "TEST");
-		if (m_inventoryInfo != null && sbrCompleteDiff)
+		if (m_inventoryInfo != null)
 		{
 			//complete inventory doc
 			for(MInventory inventory : m_inventoryDoc)

@@ -1,0 +1,26 @@
+Cara melakukan base custom:
+
+1. Buat fragmen project dengan Host plugin : org.adempiere.base
+   Jangan set host minimum version ke versi 5.1 (sesuai versi idempiere) karena akan error. Set ke versi dibawahnya atau tidak usah di set
+
+2. Copy kan class yang akan di customisasi ke project (buat folder sendiri untuk source)
+3. Pada bagian build, masukkan nama jar yang akan build. misal: com.gue.plugin.base.jar
+
+4. Buka project org.idempiere.base, kemudian edit mainfest.mf pada bagian: 
+   -Runtime, tambahkan classpath (pada bagian kanan window) dengan pencet tombol NEW. Masukkan com.gue.plugin.base.jar. 
+      Kemudian set pada bagian atas endiri (di pencet tombol Up sampai posisi atas sendiri)
+
+   -Build, setelah nambah classpath di bagian Runtime maka otomatis pada bagian build akan muncul com.gue.plugin.base.jar dibawah base.jar
+    Maka hapus com.gue.plugin.base.jar sehingga tersisa base.jar saja
+
+5. Build project fragment yang baru dibuat dan project org.adempiere.base
+6. Export deployable plugins and fragmen kedua project tersebut. Sehingga nanti akan ada 2 file jar 
+   yaitu com.gue.plugin.base.jar dan org.adempiere.base.jar.
+
+7. Jika dilakukan testing di eclipse maka sudah jalan dengan sempurna, maka agar bisa jalan di server production lakukan langkah selanjutnya.
+8. Copy file org.adempiere.base.jar di foler /idempiere-server/plugins/ ke tempat lain (sebagai backup). Kemudian copy kan file       org.adempiere.base.jar hasil dari langkah nomor 6 ke folder /idempiere-server/plugin (replace). 
+
+9. Jalankan server idempiere. Jika tidak ada error, maka buka osgi monitor, kemudian install com.gue.plugin.base.jar sehingga muncul didaftar       plugin. 
+
+10. Matikan server idempiere dan start lagi.
+11. Server idempiere sudah menjadi versi custom

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.gue.plugin.basecustom
+Bundle-Name: Gue!BaseCustom
 Bundle-SymbolicName: com.gue.plugin.basecustom;singleton:=true
 Bundle-Version: 5.1.0.qualifier
 Bundle-Vendor: Gue!Shindu
-Fragment-Host: org.adempiere.base;bundle-version="5.1.0.qualifier"
+Fragment-Host: org.adempiere.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
