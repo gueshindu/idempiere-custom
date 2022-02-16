@@ -1,17 +1,20 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.gue.plugin.gueform
+Bundle-Name: Gue!Form
 Bundle-SymbolicName: com.gue.plugin.gueform;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: GUE
+Bundle-Vendor: Gue!Shindu
 Automatic-Module-Name: com.gue.plugin.gueform
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.adempiere.base;bundle-version="5.1.0",
  org.adempiere.plugin.utils;bundle-version="5.1.0",
  org.adempiere.ui.zk;bundle-version="5.1.0",
- zk
+ org.adempiere.ui;bundle-version="5.1.0",
+ zk;bundle-version="8.0.2",
+ zul;bundle-version="8.0.2"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.adempiere.plugin.utils.AdempiereActivator
-Import-Package: org.compiere.apps.form,
- org.zkoss.zul
 Service-Component: OSGI-INF/gueform.xml
+Export-Package: com.gue.plugin.gueform,
+ com.gue.plugin.webui.factory,
+ com.gue.plugin.webui.form

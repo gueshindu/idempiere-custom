@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: CreatePOFromReq
+Bundle-Name: Gue!CreateFromReq
 Bundle-SymbolicName: com.gue.plugin.createfromreq;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Gue!Shindu
