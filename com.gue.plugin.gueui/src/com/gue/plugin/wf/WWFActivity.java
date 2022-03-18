@@ -49,6 +49,7 @@ import org.compiere.model.MQuery;
 import org.compiere.model.MRefList;
 import org.compiere.model.MRole;
 import org.compiere.model.MSysConfig;
+import org.compiere.model.PO;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
 import org.compiere.util.DisplayType;
@@ -377,6 +378,12 @@ public class WWFActivity extends ADForm implements EventListener<Event>
 	public int loadActivities()
 	{
 		long start = System.currentTimeMillis();
+		
+		//Add by shindu
+		// 18 Mar 2022
+		String tmpSummary;
+		PO po;
+		//End by shindu
 
 		int MAX_ACTIVITIES_IN_LIST = MSysConfig.getIntValue(MSysConfig.MAX_ACTIVITIES_IN_LIST, 200, Env.getAD_Client_ID(Env.getCtx()));
 
@@ -410,7 +417,18 @@ public class WWFActivity extends ADForm implements EventListener<Event>
 				List<Object> rowData = new ArrayList<Object>();
 				rowData.add(activity.getPriority());
 				rowData.add(activity.getNodeName());
-				rowData.add(activity.getSummary());
+				
+				//Add by shindu
+				// 18 Mar 2022
+				tmpSummary = activity.getSummary();
+				if (activity.getPO().get_Table_ID() == 702)
+				{
+					tmpSummary += " [" + activity.getPO().get_ValueAsString("help") + "]"; 
+				}
+				
+				rowData.add(tmpSummary);
+				//End by shindu
+								
 				model.add(rowData);
 				if (list.size() > MAX_ACTIVITIES_IN_LIST && MAX_ACTIVITIES_IN_LIST > 0)
 				{
