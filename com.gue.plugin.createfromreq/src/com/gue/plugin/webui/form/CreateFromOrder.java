@@ -229,6 +229,9 @@ public abstract class CreateFromOrder extends CreateFrom
 					m_orderLine.setC_Charge_ID(rLine.getC_Charge_ID());
 					
 				}
+				//Add shindu 29 mar 2022
+				m_orderLine.setDescription(rLine.getDescription());
+				//end
 				m_orderLine.setPriceActual(rLine.getPriceActual());
 				m_orderLine.setAD_Org_ID(rLine.getAD_Org_ID());
 				m_orderLine.setQty(rLine.getQty());
